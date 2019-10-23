@@ -18,9 +18,9 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_weight="1"
                 android:width="350dp"
-                android:text="Имя объекта" />
+                android:layout_weight="1"
+                android:text="@string/obj"/>
 
             <Spinner
                 android:id="@+id/spinner"
@@ -42,7 +42,7 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:width="350dp"
-                android:text="Имя объекта" />
+                android:text="@string/obj" />
 
             <EditText
                 android:layout_width="wrap_content"
@@ -50,7 +50,7 @@
                 android:layout_weight="1"
                 android:ems="10"
                 android:inputType="textPersonName"
-                android:text="Имя объекта" />
+                android:text="@string/obj" />
         </LinearLayout>
 
         <LinearLayout
@@ -63,7 +63,7 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:width="350dp"
-                android:text="Улица и дом" />
+                android:text="@string/street" />
 
             <EditText
                 android:layout_width="wrap_content"
@@ -71,7 +71,7 @@
                 android:layout_weight="1"
                 android:ems="10"
                 android:inputType="textPersonName"
-                android:text="Улица и дом" />
+                android:text="@string/street" />
         </LinearLayout>
 
         <LinearLayout
@@ -84,7 +84,7 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:width="350dp"
-                android:text="ФИО заказчика" />
+                android:text="@string/initials" />
 
             <EditText
                 android:layout_width="wrap_content"
@@ -92,7 +92,7 @@
                 android:layout_weight="1"
                 android:ems="10"
                 android:inputType="textPersonName"
-                android:text="ФИО заказчика" />
+                android:text="@string/initials" />
         </LinearLayout>
 
         <LinearLayout
@@ -105,7 +105,7 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:width="350dp"
-                android:text="Температура воздуха" />
+                android:text="@string/temperature" />
 
             <EditText
                 android:layout_width="wrap_content"
@@ -113,7 +113,7 @@
                 android:layout_weight="1"
                 android:ems="10"
                 android:inputType="textPersonName"
-                android:text="Температура воздуха" />
+                android:text="@string/temperature" />
         </LinearLayout>
 
         <LinearLayout
@@ -126,7 +126,7 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:width="350dp"
-                android:text="Влажность воздуха" />
+                android:text="@string/humidity" />
 
             <EditText
                 android:layout_width="wrap_content"
@@ -134,7 +134,7 @@
                 android:layout_weight="1"
                 android:ems="10"
                 android:inputType="textPersonName"
-                android:text="Влажность воздуха" />
+                android:text="@string/humidity" />
         </LinearLayout>
 
         <LinearLayout
@@ -147,7 +147,7 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:width="350dp"
-                android:text="Атмосферное давление" />
+                android:text="@string/pressure" />
 
             <EditText
                 android:layout_width="wrap_content"
@@ -155,7 +155,7 @@
                 android:layout_weight="1"
                 android:ems="10"
                 android:inputType="textPersonName"
-                android:text="Атмосферное давление" />
+                android:text="@string/pressure" />
         </LinearLayout>
 
         <LinearLayout
@@ -168,7 +168,7 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:width="350dp"
-                android:text="Номер отчета" />
+                android:text="@string/report" />
 
             <EditText
                 android:layout_width="wrap_content"
@@ -176,7 +176,7 @@
                 android:layout_weight="1"
                 android:ems="10"
                 android:inputType="textPersonName"
-                android:text="Номер отчета" />
+                android:text="@string/report" />
         </LinearLayout>
     </LinearLayout>
 </ScrollView>

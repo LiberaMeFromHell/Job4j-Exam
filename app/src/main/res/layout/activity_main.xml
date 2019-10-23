@@ -53,14 +53,16 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="Назад" />
+            android:text="Назад"
+            style="@style/ButtonStyle"/>
 
         <Button
             android:id="@+id/button2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="Далее" />
+            android:text="Далее"
+            style="@style/ButtonStyle" />
     </LinearLayout>
 
 </LinearLayout>
