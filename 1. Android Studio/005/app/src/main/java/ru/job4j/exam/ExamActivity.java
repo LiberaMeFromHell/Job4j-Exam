@@ -10,7 +10,7 @@ import android.widget.TextView;
 import java.util.Arrays;
 import java.util.List;
 
-public class MainActivity extends AppCompatActivity {
+public class ExamActivity extends AppCompatActivity {
 
     private int position = 0;
 
@@ -41,13 +41,14 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.custom_layout);
+        setContentView(R.layout.exam_activity);
+        this.fillForm();
     }
 
     private void fillForm() {
         findViewById(R.id.previous).setEnabled(position != 0);
         findViewById(R.id.next).setEnabled(position != questions.size() - 1);
-        
+
         final TextView text = findViewById(R.id.question);
         Question question = this.questions.get(this.position);
         text.setText(question.getText());
