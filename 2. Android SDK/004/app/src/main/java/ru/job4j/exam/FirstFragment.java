@@ -2,10 +2,12 @@ package ru.job4j.exam;
 
 import android.content.Context;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -13,13 +15,17 @@ import androidx.fragment.app.Fragment;
 
 public class FirstFragment extends Fragment {
 
+    private TextView message;
     private OnNextButtonClickListener callback;
     private Button nextFragment;
 
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+
         View view = inflater.inflate(R.layout.fragment_first, container, false);
+
+        message = view.findViewById(R.id.message);
         nextFragment = view.findViewById(R.id.next_fragment);
         nextFragment.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -27,6 +33,7 @@ public class FirstFragment extends Fragment {
                 FirstFragment.this.onClick(view);
             }
         });
+
         return view;
     }
 
@@ -50,5 +57,8 @@ public class FirstFragment extends Fragment {
         callback = null; // обнуляем ссылку при отсоединении фрагмента от активити
     }
 
-
+    public void updateText(String m) {
+        Log.d("updateText", m);
+        message.setText("waasasdsa");
+    }
 }

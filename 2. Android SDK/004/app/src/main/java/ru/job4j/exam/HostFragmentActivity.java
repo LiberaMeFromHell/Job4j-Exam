@@ -5,8 +5,9 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 
 import android.os.Bundle;
+import android.util.Log;
 
-public class HostFragmentActivity extends AppCompatActivity implements FirstFragment.OnNextButtonClickListener {
+public class HostFragmentActivity extends AppCompatActivity implements FirstFragment.OnNextButtonClickListener, SecondFragment.OnBackButtonClickListener {
 
     private FragmentManager fm;
     private Fragment firstFragment;
@@ -42,5 +43,11 @@ public class HostFragmentActivity extends AppCompatActivity implements FirstFrag
                 .replace(R.id.fragment_container, secondFragment)
                 .addToBackStack(null)
                 .commit();
+    }
+
+    @Override
+    public void onBackButtonClicked(String message) {
+        fm.popBackStack();
+        ((FirstFragment)firstFragment).updateText(message);
     }
 }
