@@ -59,6 +59,6 @@ public class FirstFragment extends Fragment {
 
     public void updateText(String m) {
         Log.d("updateText", m);
-        message.setText("waasasdsa");
+        message.setText(m);
     }
 }
