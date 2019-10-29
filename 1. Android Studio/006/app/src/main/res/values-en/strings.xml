@@ -10,8 +10,6 @@
     <string name="humidity">Humidity</string>
     <string name="pressure">Pressure</string>
     <string name="report">Report</string>
-    <string name="date">Date</string>
-    <string name="date_prompt">Choose date</string>
     <string-array name="domain_arrays">
     <item>Moscow</item>
     <item>Saint-Petersburg</item>

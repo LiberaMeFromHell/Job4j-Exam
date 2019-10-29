@@ -9,16 +9,11 @@
         <item name="android:textSize">@dimen/font_normal</item>
     </style>
 
-    <style name="RightObject">
-        <item name="android:layout_width">wrap_content</item>
-        <item name="android:layout_height">wrap_content</item>
-        <item name="android:layout_weight">1</item>
-        <item name="android:ems">10</item>
+    <style name="PrimaryText">
+        <item name="android:textColor">@color/colorTextPrimaryDark</item>
     </style>
 
-    <style name="LeftObject">
-        <item name="android:layout_width">wrap_content</item>
-        <item name="android:layout_height">wrap_content</item>
-        <item name="android:width">650dp</item>
+    <style name="SecondaryText">
+        <item name="android:textColor">@color/colorTextSecondary</item>
     </style>
 </resources>
