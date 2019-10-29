@@ -1,0 +1,155 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/scroll"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingLeft="24dp">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView
+                style="@style/LeftObject"
+                android:text="@string/obj"/>
+
+            <Spinner
+                android:id="@+id/spinner"
+                style="@style/RightObject"
+                android:entries="@array/domain_arrays"
+                android:prompt="@string/domain_prompt"
+                android:spinnerMode="dialog"
+                android:paddingBottom="16dp" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView
+                style="@style/LeftObject"
+                android:text="@string/date" />
+
+            <Spinner
+                android:id="@+id/spinner2"
+                style="@style/RightObject"
+                android:entries="@array/date_arrays"
+                android:prompt="@string/date_prompt"
+                android:paddingBottom="8dp"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView
+                style="@style/LeftObject"
+                android:text="@string/obj" />
+
+            <EditText
+                style="@style/RightObject"
+                android:inputType="textPersonName"
+                android:text="@string/obj" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView
+                style="@style/LeftObject"
+                android:text="@string/street" />
+
+            <EditText
+                style="@style/RightObject"
+                android:inputType="textPersonName"
+                android:text="@string/street" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView
+                style="@style/LeftObject"
+                android:text="@string/initials" />
+
+            <EditText
+                style="@style/RightObject"
+                android:inputType="textPersonName"
+                android:text="@string/initials" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView
+                style="@style/LeftObject"
+                android:text="@string/temperature" />
+
+            <EditText
+                style="@style/RightObject"
+                android:inputType="textPersonName"
+                android:text="@string/temperature" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView
+                style="@style/LeftObject"
+                android:text="@string/humidity" />
+
+            <EditText
+                style="@style/RightObject"
+                android:inputType="textPersonName"
+                android:text="@string/humidity" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView
+                style="@style/LeftObject"
+                android:text="@string/pressure" />
+
+            <EditText
+                style="@style/RightObject"
+                android:inputType="textPersonName"
+                android:text="@string/pressure" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView
+                style="@style/LeftObject"
+                android:text="@string/report" />
+
+            <EditText
+                style="@style/RightObject"
+                android:inputType="textPersonName"
+                android:text="@string/report" />
+        </LinearLayout>
+
+    </LinearLayout>
+</ScrollView>

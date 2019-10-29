@@ -9,12 +9,14 @@
     tools:context=".ExamActivity">
 
     <TextView
+        style="@style/SecondaryText"
         android:id="@+id/question"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Hello, Rustam!" />
 
     <RadioGroup
+        style="@style/PrimaryText"
         android:id="@+id/variants"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -55,16 +57,14 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="Назад"
-            style="@style/ButtonStyle"/>
+            android:text="Назад"/>
 
         <Button
             android:id="@+id/next"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="Далее"
-            style="@style/ButtonStyle" />
+            android:text="Далее"/>
     </LinearLayout>
 
 </LinearLayout>

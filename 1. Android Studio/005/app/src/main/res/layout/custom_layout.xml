@@ -179,5 +179,24 @@
                 android:inputType="textPersonName"
                 android:text="@string/report" />
         </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:width="350dp"
+                android:text="@string/report" />
+
+            <Spinner
+                android:id="@+id/spinner2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1" />
+        </LinearLayout>
     </LinearLayout>
 </ScrollView>
