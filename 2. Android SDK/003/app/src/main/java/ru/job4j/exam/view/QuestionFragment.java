@@ -1,23 +1,26 @@
-/**
- * The app demonstrates screen rotation event in Android.
- *
- * @author Rustam Galimov
- * @version 1.0
- * @since 30.10.2019
- */
 package ru.job4j.exam.view;
 
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentManager;
-
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.RadioButton;
+import android.widget.RadioGroup;
+import android.widget.TextView;
+import android.widget.Toast;
+
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.fragment.app.Fragment;
 
 import ru.job4j.exam.R;
+import ru.job4j.exam.model.MyStore;
+import ru.job4j.exam.model.Store;
 
-public class ExamActivity extends AppCompatActivity {
-
-    /*private int position = 0;
+public class QuestionFragment extends Fragment {
+    private int position = 0;
 
     private Button next;
     private Button previous;
@@ -26,51 +29,44 @@ public class ExamActivity extends AppCompatActivity {
     private TextView text;
 
     public static final String HINT_FOR = "hint_for";
-    public static final String ANSWERS = "Answers";*/
+    public static final String ANSWERS = "Answers";
 
+    @Nullable
     @Override
-    protected void onCreate(final Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.host_frg);
+    public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
 
-        FragmentManager fm = getSupportFragmentManager();
-        if (fm.findFragmentById(R.id.content) == null) {
-            fm.beginTransaction()
-                    .add(R.id.content, loadFrg())
-                    .commit();
-        }
+        View view = inflater.inflate(R.layout.question_fragment, container, false);
+        store = MyStore.getInstance();
 
+        text = view.findViewById(R.id.question);
 
-        /*store = MyStore.getInstance();
-
-        text = findViewById(R.id.question);
-
-        variants = findViewById(R.id.variants);
+        variants = view.findViewById(R.id.variants);
         variants.setOnCheckedChangeListener(this::radioButtonChecked);
 
-        next = findViewById(R.id.next);
+        next = view.findViewById(R.id.next);
         next.setOnClickListener(this::nextBtn);
 
-        previous = findViewById(R.id.previous);
+        previous = view.findViewById(R.id.previous);
         previous.setOnClickListener(this::previousBtn);
 
         fillForm();
 
-        Button hint = findViewById(R.id.hint);
+        Button hint = view.findViewById(R.id.hint);
         hint.setOnClickListener(
                 new View.OnClickListener() {
                     @Override
                     public void onClick(final View view) {
                         Intent intent = new Intent(
-                                ExamActivity.this, HintActivity.class);
+                                getActivity(), HintActivity.class);
                         intent.putExtra(HINT_FOR, position);
                         startActivity(intent);
                     }
                 }
-        );*/
+        );
+        return view;
     }
 
-    /*private void fillForm() {
+    private void fillForm() {
 
         text.setText(store.getQuestionText(this.position));
 
@@ -84,17 +80,15 @@ public class ExamActivity extends AppCompatActivity {
         if (store.getAnswer(position) != -1) {
             variants.check(store.getChoice(position));
         } else {
-
-            findViewById(R.id.previous).setEnabled(false);
-            findViewById(R.id.next).setEnabled(false);
+            previous.setEnabled(false);
+            next.setEnabled(false);
         }
     }
 
     private void showAnswer() {
-        variants = findViewById(R.id.variants);
         int id = variants.getCheckedRadioButtonId();
         Toast.makeText(
-                this,
+                getActivity(),
                 "Your answer is " + id + ", correct is " + store.getAnswer(position),
                 Toast.LENGTH_SHORT
         ).show();
@@ -115,8 +109,8 @@ public class ExamActivity extends AppCompatActivity {
             for (int i = 0; i < store.getSize(); i++) {
                 b[i] = store.getAnswer(i);
             }
-            Intent intent = new Intent(ExamActivity.this, ResultActivity.class);
-            intent.putExtra(ExamActivity.ANSWERS, b);
+            Intent intent = new Intent(getActivity(), ResultActivity.class);
+            intent.putExtra(QuestionFragment.ANSWERS, b);
             startActivity(intent);
         } else {
             position++;
@@ -133,9 +127,5 @@ public class ExamActivity extends AppCompatActivity {
     private void radioButtonChecked(final RadioGroup radioGroup, final int i) {
         next.setEnabled(true);
         previous.setEnabled(position != 0);
-    }*/
-
-    public Fragment loadFrg() {
-        return new QuestionFragment();
     }
 }

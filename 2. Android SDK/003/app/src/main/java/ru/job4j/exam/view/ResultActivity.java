@@ -20,7 +20,7 @@ public class ResultActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_result);
         TextView textView = findViewById(R.id.textView);
-        int[] answers = getIntent().getIntArrayExtra(ExamActivity.ANSWERS);
+        int[] answers = getIntent().getIntArrayExtra(QuestionFragment.ANSWERS);
         StringBuilder str = new StringBuilder("Question 1: " + answers[0] + "\n").
                 append("Question 2: " + answers[1] + "\n").
                 append("Question 3: " + answers[2]);
