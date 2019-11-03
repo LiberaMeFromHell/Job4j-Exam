@@ -1,6 +1,8 @@
 package ru.job4j;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.lifecycle.Observer;
+import androidx.lifecycle.ViewModelProviders;
 
 import android.os.Bundle;
 import android.view.View;
@@ -11,9 +13,9 @@ import android.widget.Toast;
 import java.util.ArrayList;
 import java.util.List;
 
-public class MainActivity extends AppCompatActivity implements Logic.onGameUpdated {
+public class MainActivity extends AppCompatActivity {
 
-    Logic logic = new Logic(this);
+    TicTacViewModel viewModel;
 
     List<Button> buttons = new ArrayList<>();
 
@@ -34,11 +36,13 @@ public class MainActivity extends AppCompatActivity implements Logic.onGameUpdat
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        viewModel = ViewModelProviders.of(this).get(TicTacViewModel.class);
+
         botSwitch = findViewById(R.id.botSwitch);
         botSwitch.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                logic.switchBot();
+                viewModel.switchBot();
             }
         });
 
@@ -61,54 +65,61 @@ public class MainActivity extends AppCompatActivity implements Logic.onGameUpdat
         buttons.add(button6);
         buttons.add(button7);
         buttons.add(button8);
+
+        viewModel.getLogic().observe(this, new Observer<Logic>() {
+            @Override
+            public void onChanged(Logic logic) {
+                updateUI(logic.isDrawGame(), logic.isGameOver(), logic.getPlayField());
+            }
+        });
     }
 
     public void answer(View view) {
         switch (view.getId()) {
             case R.id.button0:
-                logic.updateField(0);
+                viewModel.updateField(0);
                 return;
             case R.id.button1:
-                logic.updateField(1);
+                viewModel.updateField(1);
                 return;
             case R.id.button2:
-                logic.updateField(2);
+                viewModel.updateField(2);
                 return;
             case R.id.button3:
-                logic.updateField(3);
+                viewModel.updateField(3);
                 return;
             case R.id.button4:
-                logic.updateField(4);
+                viewModel.updateField(4);
                 return;
             case R.id.button5:
-                logic.updateField(5);
+                viewModel.updateField(5);
                 return;
             case R.id.button6:
-                logic.updateField(6);
+                viewModel.updateField(6);
                 return;
             case R.id.button7:
-                logic.updateField(7);
+                viewModel.updateField(7);
                 return;
             case R.id.button8:
-                logic.updateField(8);
+                viewModel.updateField(8);
         }
     }
 
-    @Override
-    public void updateUI(char[] playFiled) {
-        for (int i = 0; i < playFiled.length; i++) {
-            buttons.get(i).setText("" + playFiled[i]);
-        }
-    }
-
-    @Override
-    public void wipeUI(boolean draw) {
-        if (draw)
+    public void updateUI(boolean isGameDraw, boolean isGameOver, char[] playFiled) {
+        if (isGameDraw) {
             Toast.makeText(this, "Draw!", Toast.LENGTH_SHORT).show();
-        else
+            for (int i = 0; i < 9; i++) {
+                buttons.get(i).setText("");
+            }
+        } else if (isGameOver) {
             Toast.makeText(this, "Game Over", Toast.LENGTH_SHORT).show();
-        for (int i = 0; i < 9; i++) {
-            buttons.get(i).setText("");
+            for (int i = 0; i < 9; i++) {
+                buttons.get(i).setText("");
+            }
+        } else {
+            for (int i = 0; i < playFiled.length; i++) {
+                buttons.get(i).setText("" + playFiled[i]);
+            }
         }
     }
 }

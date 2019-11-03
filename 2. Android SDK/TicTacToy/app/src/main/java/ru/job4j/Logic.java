@@ -2,20 +2,27 @@ package ru.job4j;
 
 import android.util.Log;
 
-import java.util.Random;
-
 public class Logic {
 
-    private boolean whosTurn = true;
+    private static Logic logic;
+    private Bot bot;
+
     private char[] playField = {' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' '};
-    private onGameUpdated callback;
 
+    private boolean whosTurn = true;
     private boolean botIsTurned = false;
-    private Random random = new Random();
+    private boolean drawGame = false;
+    private boolean gameOver = false;
 
-    public Logic(onGameUpdated callback) {
+    public static synchronized Logic getInstance(Bot bot) {
+        if (logic == null)
+            logic = new Logic(bot);
+        return logic;
+    }
+
+    private Logic(Bot bot) {
+        this.bot = bot;
         printDebug();
-        this.callback = callback;
     }
 
     void updateField(int cellIndex) {
@@ -28,30 +35,27 @@ public class Logic {
                 playField[cellIndex] = 'O';
             }
 
-
-            if (!checkResults(cellIndex)) {
-                if (isDraw()) {
+            if (!(gameOver = isGameOver(cellIndex))) {
+                if (drawGame = isDraw()) {
                     wipe();
                     whosTurn = false;
-                    callback.wipeUI(true);
-                } else
-                    callback.updateUI(playField);
+                }
             } else {
                 wipe();
                 whosTurn = false;
-                callback.wipeUI(false);
             }
+
             printDebug();
 
             whosTurn = !whosTurn;
 
             if (botIsTurned && !whosTurn) {
-                botsTurn();
+                updateField(bot.botsTurn(playField));
             }
         }
     }
 
-    private boolean checkResults(int cellIndex) {
+    private boolean isGameOver(int cellIndex) {
 
         int row = cellIndex - cellIndex % 3; //getting row
 
@@ -86,12 +90,6 @@ public class Logic {
                 playField[6] + playField[7] + playField[8]);
     }
 
-    public interface onGameUpdated {
-        void updateUI(char[] playField);
-
-        void wipeUI(boolean draw);
-    }
-
     private boolean isDraw() {
         boolean d = true;
         for (char c : playField) {
@@ -102,20 +100,20 @@ public class Logic {
     }
 
     void switchBot() {
-        Log.d("bot", "switchBot: ");
         botIsTurned = !botIsTurned;
         if (!whosTurn)
-            botsTurn();
+            updateField(bot.botsTurn(playField));
     }
 
-    private void botsTurn() {
+    public char[] getPlayField() {
+        return playField;
+    }
 
-        int b;
-        for (; ; ) {
-            b = random.nextInt(8);
-            if (playField[b] == ' ')
-                break;
-        }
-        updateField(b);
+    public boolean isGameOver() {
+        return gameOver;
+    }
+
+    public boolean isDrawGame() {
+        return drawGame;
     }
 }

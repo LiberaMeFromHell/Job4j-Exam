@@ -9,14 +9,8 @@
     <string name="humidity">Влажность воздуха</string>
     <string name="pressure">Атмосферное давление</string>
     <string name="report">Номер отчета</string>
-    <string name="date">Дата</string>
-    <string name="date_prompt">Выберете Дату</string>
     <string-array name="domain_arrays">
         <item>Московская</item>
         <item>СПб</item>
-    </string-array>
-    <string-array name="date_arrays">
-        <item>September</item>
-        <item>November</item>
     </string-array>
 </resources>
