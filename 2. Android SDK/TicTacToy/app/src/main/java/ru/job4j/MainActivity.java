@@ -3,8 +3,6 @@ package ru.job4j;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
-import android.util.Log;
-import android.view.MotionEvent;
 import android.view.View;
 import android.widget.Button;
 import android.widget.Switch;
@@ -13,7 +11,7 @@ import android.widget.Toast;
 import java.util.ArrayList;
 import java.util.List;
 
-public class MainActivity extends AppCompatActivity implements Logic.onGameOver {
+public class MainActivity extends AppCompatActivity implements Logic.onGameUpdated {
 
     Logic logic = new Logic(this);
 

@@ -1,11 +1,17 @@
-package ru.job4j.exam;
+/**
+ * The app demonstrates screen rotation event in Android.
+ * @author Rustam Galimov
+ * @since 30.10.2019
+ * @version 1.0
+ */
+package ru.job4j.exam.model;
 
 
 public class Option {
     private int id;
     private String text;
 
-    public Option(int id, String text) {
+    public Option(final int id, final String text) {
         this.id = id;
         this.text = text;
     }
@@ -14,7 +20,7 @@ public class Option {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(final int id) {
         this.id = id;
     }
 
@@ -22,7 +28,7 @@ public class Option {
         return text;
     }
 
-    public void setText(String text) {
+    public void setText(final String text) {
         this.text = text;
     }
 }

@@ -5,7 +5,7 @@
     android:layout_height="match_parent"
     android:gravity="center"
     android:orientation="vertical"
-    tools:context=".ExamActivity">
+    tools:context=".view.ExamActivity">
 
     <TextView
         android:id="@+id/question"

@@ -8,12 +8,12 @@ public class Logic {
 
     private boolean whosTurn = true;
     private char[] playField = {' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' '};
-    private onGameOver callback;
+    private onGameUpdated callback;
 
     private boolean botIsTurned = false;
     private Random random = new Random();
 
-    public Logic(onGameOver callback) {
+    public Logic(onGameUpdated callback) {
         printDebug();
         this.callback = callback;
     }
@@ -86,7 +86,7 @@ public class Logic {
                 playField[6] + playField[7] + playField[8]);
     }
 
-    public interface onGameOver {
+    public interface onGameUpdated {
         void updateUI(char[] playField);
 
         void wipeUI(boolean draw);

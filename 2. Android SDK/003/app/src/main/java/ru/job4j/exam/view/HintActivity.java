@@ -1,4 +1,10 @@
-package ru.job4j.exam;
+/**
+ * The app demonstrates screen rotation event in Android.
+ * @author Rustam Galimov
+ * @since 30.10.2019
+ * @version 1.0
+ */
+package ru.job4j.exam.view;
 
 import android.os.Bundle;
 import android.view.View;
@@ -11,12 +17,14 @@ import androidx.appcompat.app.AppCompatActivity;
 import java.util.HashMap;
 import java.util.Map;
 
+import ru.job4j.exam.R;
+
 public class HintActivity extends AppCompatActivity {
 
-    private final Map<Integer, String> answers = new HashMap<Integer, String>();
+    private final Map<Integer, String> answers = new HashMap<>();
 
     @Override
-    protected void onCreate(@Nullable Bundle state) {
+    protected void onCreate(@Nullable final Bundle state) {
         super.onCreate(state);
         setContentView(R.layout.hint_activity);
 
@@ -24,7 +32,7 @@ public class HintActivity extends AppCompatActivity {
         back.setOnClickListener(
                 new View.OnClickListener() {
                     @Override
-                    public void onClick(View view) {
+                    public void onClick(final View view) {
                         onBackPressed();
                     }
                 }
