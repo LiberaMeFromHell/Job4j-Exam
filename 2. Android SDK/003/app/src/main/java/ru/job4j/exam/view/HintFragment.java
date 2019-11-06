@@ -26,6 +26,14 @@ public class HintFragment extends Fragment {
         this.answers.put(2, "Hint 3");
     }
 
+    public static HintFragment of(int index) {
+        HintFragment hint = new HintFragment();
+        Bundle bundle = new Bundle();
+        bundle.putInt(QuestionFragment.HINT_FOR, index);
+        hint.setArguments(bundle);
+        return hint;
+    }
+
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {

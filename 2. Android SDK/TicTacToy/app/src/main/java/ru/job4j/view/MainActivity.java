@@ -1,4 +1,4 @@
-package ru.job4j;
+package ru.job4j.view;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.lifecycle.Observer;
@@ -12,6 +12,10 @@ import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import ru.job4j.model.GameEngine;
+import ru.job4j.R;
+import ru.job4j.viewmodel.TicTacViewModel;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -66,10 +70,10 @@ public class MainActivity extends AppCompatActivity {
         buttons.add(button7);
         buttons.add(button8);
 
-        viewModel.getLogic().observe(this, new Observer<Logic>() {
+        viewModel.getLogic().observe(this, new Observer<GameEngine>() {
             @Override
-            public void onChanged(Logic logic) {
-                updateUI(logic.isDrawGame(), logic.isGameOver(), logic.getPlayField());
+            public void onChanged(GameEngine gameEngine) {
+                updateUI(gameEngine.isDrawGame(), gameEngine.isGameOver(), gameEngine.getPlayField());
             }
         });
     }

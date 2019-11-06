@@ -1,8 +1,8 @@
-package ru.job4j;
+package ru.job4j.model;
 
 import android.util.Log;
 
-public class Logic {
+public class Logic implements GameEngine{
 
     private static Logic logic;
     private Bot bot;
@@ -14,18 +14,18 @@ public class Logic {
     private boolean drawGame = false;
     private boolean gameOver = false;
 
-    public static synchronized Logic getInstance(Bot bot) {
+    public static synchronized Logic getInstance() {
         if (logic == null)
-            logic = new Logic(bot);
+            logic = new Logic();
         return logic;
     }
 
-    private Logic(Bot bot) {
-        this.bot = bot;
-        printDebug();
+    private Logic() {
+        bot = Bot.getInstance();
+        //printDebug();
     }
 
-    void updateField(int cellIndex) {
+    public void updateField(int cellIndex) {
 
         if (playField[cellIndex] == ' ') {
 
@@ -45,7 +45,7 @@ public class Logic {
                 whosTurn = false;
             }
 
-            printDebug();
+            //printDebug();
 
             whosTurn = !whosTurn;
 
@@ -84,11 +84,11 @@ public class Logic {
         }
     }
 
-    private void printDebug() {
+    /*private void printDebug() {
         Log.d("print", "Debug" + "\n" + playField[0] + playField[1] + playField[2] + "\n" +
                 playField[3] + playField[4] + playField[5] + "\n" +
                 playField[6] + playField[7] + playField[8]);
-    }
+    }*/
 
     private boolean isDraw() {
         boolean d = true;
@@ -99,7 +99,7 @@ public class Logic {
         return d;
     }
 
-    void switchBot() {
+    public void switchBot() {
         botIsTurned = !botIsTurned;
         if (!whosTurn)
             updateField(bot.botsTurn(playField));
@@ -115,5 +115,12 @@ public class Logic {
 
     public boolean isDrawGame() {
         return drawGame;
+    }
+
+    /**
+     * Workaround for testing purposes. We need a clean object to run tests properly. Singleton is bad
+     */
+    public static Logic getNewInstance() {
+        return new Logic();
     }
 }
