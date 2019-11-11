@@ -10,14 +10,21 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity android:name=".view.ResultActivity"></activity>
-        <activity android:name=".view.ExamActivity">
+        <activity android:name=".view.ExamActivity"
+            android:parentActivityName=".view.ExamsActivity">
+
+        </activity>
+        <activity android:name=".view.HintActivity" />
+        <activity android:name=".view.ExamsActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".view.HintActivity" />
+
+
+
     </application>
 
 </manifest>

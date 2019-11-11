@@ -1,3 +1,10 @@
+/**
+ * The app demonstrates screen rotation event in Android.
+ *
+ * @author Rustam Galimov
+ * @version 1.0
+ * @since 30.10.2019
+ */
 package ru.job4j.exam.view;
 
 import android.os.Bundle;
@@ -37,7 +44,7 @@ public class HintFragment extends Fragment {
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        //setRetainInstance(true);
+
         View view = inflater.inflate(R.layout.hint_fragment, container, false);
         Button back = view.findViewById(R.id.back);
         back.setOnClickListener(
