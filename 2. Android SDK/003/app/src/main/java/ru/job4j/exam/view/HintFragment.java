@@ -37,7 +37,7 @@ public class HintFragment extends Fragment {
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        setRetainInstance(true);
+        //setRetainInstance(true);
         View view = inflater.inflate(R.layout.hint_fragment, container, false);
         Button back = view.findViewById(R.id.back);
         back.setOnClickListener(

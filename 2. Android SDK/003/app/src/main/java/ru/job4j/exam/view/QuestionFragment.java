@@ -34,7 +34,7 @@ public class QuestionFragment extends Fragment {
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        setRetainInstance(true);
+        //setRetainInstance(true);
         View view = inflater.inflate(R.layout.question_fragment, container, false);
         store = MyStore.getInstance();
 

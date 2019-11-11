@@ -1,3 +1,9 @@
+/**
+ * The app demonstrates MVP pattern in Android app.
+ * @author Rustam Galimov
+ * @since 30.10.2019
+ * @version 1.0
+ */
 package ru.job4j.exam;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -9,7 +15,6 @@ import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.TextView;
 import android.widget.Toast;
-
 import java.util.Arrays;
 import java.util.List;
 
