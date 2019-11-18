@@ -20,13 +20,14 @@ import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.fragment.app.DialogFragment;
 import androidx.fragment.app.Fragment;
 
 import ru.job4j.exam.R;
 import ru.job4j.exam.model.MyStore;
 import ru.job4j.exam.model.Store;
 
-public class QuestionFragment extends Fragment {
+public class QuestionFragment extends Fragment implements ConfirmHintDialogFragment.ConfirmHintDialogListener{
     private int position = 0;
 
     private Button next;
@@ -63,10 +64,10 @@ public class QuestionFragment extends Fragment {
                 new View.OnClickListener() {
                     @Override
                     public void onClick(final View view) {
-                        Intent intent = new Intent(
-                                getActivity(), HintActivity.class);
-                        intent.putExtra(HINT_FOR, position);
-                        startActivity(intent);
+
+                        DialogFragment dialog = new ConfirmHintDialogFragment(QuestionFragment.this);
+
+                        dialog.show(getActivity().getSupportFragmentManager(), "dialog_tag");
                     }
                 }
         );
@@ -134,5 +135,18 @@ public class QuestionFragment extends Fragment {
     private void radioButtonChecked(final RadioGroup radioGroup, final int i) {
         next.setEnabled(true);
         previous.setEnabled(position != 0);
+    }
+
+    @Override
+    public void onPositiveDialogClick(DialogFragment dialog) {
+        Intent intent = new Intent(
+                getActivity(), HintActivity.class);
+        intent.putExtra(HINT_FOR, position);
+        startActivity(intent);
+    }
+
+    @Override
+    public void onNegativeDialogClick(DialogFragment dialog) {
+        Toast.makeText(getActivity(), "Молодец!!!", Toast.LENGTH_SHORT).show();
     }
 }
