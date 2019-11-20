@@ -9,6 +9,8 @@
     <string name="humidity">Влажность воздуха</string>
     <string name="pressure">Атмосферное давление</string>
     <string name="report">Номер отчета</string>
+    <string name="add_item">Add exam</string>
+    <string name="delete_item">Delete all</string>
     <string-array name="domain_arrays">
         <item>Московская</item>
         <item>СПб</item>

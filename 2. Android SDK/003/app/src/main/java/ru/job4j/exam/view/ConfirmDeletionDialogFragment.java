@@ -7,11 +7,11 @@ import android.os.Bundle;
 import androidx.appcompat.app.AlertDialog;
 import androidx.fragment.app.DialogFragment;
 
-public class ConfirmHintDialogFragment extends DialogFragment {
+public class ConfirmDeletionDialogFragment extends DialogFragment {
 
-    private ConfirmHintDialogListener callback;
+    private ConfirmDeletionDialogListener callback;
 
-    public ConfirmHintDialogFragment(ConfirmHintDialogListener callback) {
+    public ConfirmDeletionDialogFragment(ConfirmDeletionDialogListener callback) {
         this.callback = callback;
     }
 
@@ -19,27 +19,20 @@ public class ConfirmHintDialogFragment extends DialogFragment {
     public Dialog onCreateDialog(Bundle savedInstanceState) {
 
         Dialog dialog = new AlertDialog.Builder(getActivity())
-                .setMessage("Показать подсказку?")
+                .setMessage("Удалить все записи?")
                 .setPositiveButton(android.R.string.ok, new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialogInterface, int i) {
-                        callback.onPositiveDialogClick(ConfirmHintDialogFragment.this);
+                        callback.onPositiveDialogClick(ConfirmDeletionDialogFragment.this);
                     }
                 })
-                .setNegativeButton(android.R.string.cancel, new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialogInterface, int i) {
-                        callback.onNegativeDialogClick(ConfirmHintDialogFragment.this);
-                    }
-                }) // кнопка Отмена
+                .setNegativeButton(android.R.string.cancel, null)
                 .create();
         return dialog;
     }
 
-    public interface ConfirmHintDialogListener {
-
+    public interface ConfirmDeletionDialogListener {
         void onPositiveDialogClick(DialogFragment dialog);
-        void onNegativeDialogClick(DialogFragment dialog);
     }
 
     @Override

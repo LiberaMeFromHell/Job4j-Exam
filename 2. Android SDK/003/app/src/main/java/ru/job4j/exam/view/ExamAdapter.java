@@ -66,6 +66,16 @@ public class ExamAdapter extends RecyclerView.Adapter<ExamAdapter.ExamHolder> {
         return this.exams.size();
     }
 
+    public void addExam(Exam exam) {
+        exams.add(exam);
+        this.notifyDataSetChanged();
+    }
+
+    public void deleteAll(){
+        exams.clear();
+        this.notifyDataSetChanged();
+    }
+
     class ExamHolder extends RecyclerView.ViewHolder {
 
         private View view;

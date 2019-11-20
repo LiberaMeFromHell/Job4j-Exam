@@ -13,6 +13,8 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuInflater;
 
 import ru.job4j.exam.R;
 
@@ -52,4 +54,5 @@ public class ExamActivity extends AppCompatActivity {
             fm.putFragment(outState, "ExamFragment", examFragment);
         }
     }
+
 }
