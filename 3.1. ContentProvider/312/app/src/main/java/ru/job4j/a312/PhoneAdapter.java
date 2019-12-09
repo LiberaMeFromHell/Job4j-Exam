@@ -7,13 +7,11 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import java.util.List;
-
 public class PhoneAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
 
-    private List<String> phones;
+    private Store phones;
 
-    public PhoneAdapter(List<String> phones) {
+    public PhoneAdapter(Store phones) {
         this.phones = phones;
     }
 
@@ -29,15 +27,15 @@ public class PhoneAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> 
     @Override
     public void onBindViewHolder(@NonNull RecyclerView.ViewHolder holder, int position) {
         TextView text  = holder.itemView.findViewById(R.id.name);
-        text.setText(phones.get(position));
+        text.setText(phones.getItem(position));
     }
 
     @Override
     public int getItemCount() {
-        return phones.size();
+        return phones.getPhones().size();
     }
 
-    public void setPhones(List<String> phones) {
+    public void setPhones(Store phones) {
         this.phones = phones;
     }
 }
