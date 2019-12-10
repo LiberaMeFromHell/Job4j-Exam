@@ -1,8 +1,9 @@
 /**
  * The app demonstrates screen rotation event in Android.
+ *
  * @author Rustam Galimov
- * @since 30.10.2019
  * @version 1.0
+ * @since 30.10.2019
  */
 package ru.job4j.exam.model;
 
