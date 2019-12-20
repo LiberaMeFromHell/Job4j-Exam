@@ -26,6 +26,7 @@ public class MainActivity extends AppCompatActivity {
     public void startThread(View view) {
         thread = new TestThread(10,textView,imageView);
         thread.start();
+        thread.loadImage(new String[]{"storage/0/emulated/1.jpg"});
     }
 
     public void stopThread(View view) {
@@ -37,6 +38,7 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onDestroy() {
         thread.interrupt();
+        thread.disposeImageLoader();
         super.onDestroy();
     }
 }

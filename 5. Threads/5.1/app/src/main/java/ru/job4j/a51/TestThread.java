@@ -2,17 +2,26 @@ package ru.job4j.a51;
 
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.os.AsyncTask;
 import android.os.Handler;
 import android.util.Log;
-import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import java.io.IOException;
+import java.io.InputStream;
+import java.lang.ref.ReferenceQueue;
+import java.lang.ref.WeakReference;
+import java.net.URL;
+
 public class TestThread extends Thread {
+
+    private static ImageView imageView;
+
+    private ImageLoader imageLoader;
     private int times;
     private Handler mainHandler = new Handler();
     private TextView textView;
-    private ImageView imageView;
 
     public TestThread(int times, TextView textView, ImageView imageView) {
         this.times = times;
@@ -61,5 +70,36 @@ public class TestThread extends Thread {
                 imageView.setImageBitmap(bitmap);
             }
         });
+    }
+
+    public void loadImage(String[] urls) {
+        ReferenceQueue rq = new ReferenceQueue();
+        imageLoader = new ImageLoader();
+        imageLoader.doInBackground(urls);
+        WeakReference weakReference = new WeakReference(imageLoader,rq);
+    }
+
+    private static class ImageLoader extends AsyncTask<String,Void,Bitmap> {
+
+        @Override
+        protected Bitmap doInBackground(String... urls) {
+            Bitmap bitmap = null;
+            try {
+                bitmap = BitmapFactory.decodeStream((InputStream)new URL(urls[0]).getContent());
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+
+            return bitmap;
+        }
+
+        @Override
+        protected void onPostExecute(Bitmap bitmap) {
+            imageView.setImageBitmap(bitmap);
+        }
+    }
+
+    public void disposeImageLoader() {
+        imageLoader = null;
     }
 }
