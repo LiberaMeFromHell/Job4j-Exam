@@ -15,19 +15,25 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 
+import javax.inject.Inject;
+
+import ru.job4j.exam.App;
 import ru.job4j.exam.R;
 import ru.job4j.exam.model.database.ExamBaseHelper;
 import ru.job4j.exam.model.database.ExamDbSchema;
 
 public class ExamUpdateFragment extends Fragment {
 
-    private SQLiteDatabase store;
+    @Inject
+    SQLiteDatabase store;
 
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.exam_update, container, false);
-        this.store = new ExamBaseHelper(this.getContext()).getWritableDatabase();
+        App.getStore().inject(this);
+        //this.store = new ExamBaseHelper(this.getContext()).getWritableDatabase();
+        App.getStore().inject(this);
         Bundle args = getArguments();
         final EditText edit = view.findViewById(R.id.title);
         edit.setText(args.getString("name"));

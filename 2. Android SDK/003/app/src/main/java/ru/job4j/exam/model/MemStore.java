@@ -8,16 +8,15 @@
 package ru.job4j.exam.model;
 
 import android.util.Log;
-
 import java.util.Arrays;
 import java.util.List;
 
-public final class MyStore implements Store {
+public final class MemStore implements Store {
 
     private List<Question> questions;
-    private static MyStore myStore;
+    private MemStore memStore;
 
-    private MyStore() {
+    public MemStore() {
         questions = Arrays.asList(
                 new Question(
                         1, "How many primitive variables does Java have?",
@@ -41,13 +40,6 @@ public final class MyStore implements Store {
                         ), 4
                 )
         );
-    }
-
-    public static synchronized MyStore getInstance() {
-        if (myStore == null) {
-            myStore = new MyStore();
-        }
-        return myStore;
     }
 
     @Override

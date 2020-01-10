@@ -11,9 +11,18 @@ import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
+import javax.inject.Singleton;
+
+import dagger.Module;
+import dagger.Provides;
+
+@Module
 public class ExamBaseHelper extends SQLiteOpenHelper {
+
     public static final String DB = "exams.db";
     public static final int VERSION = 1;
+
+    private ExamBaseHelper examBaseHelper;
 
     public ExamBaseHelper(Context context) {
         super(context, DB, null, VERSION);
@@ -32,5 +41,14 @@ public class ExamBaseHelper extends SQLiteOpenHelper {
     @Override
     public void onUpgrade(SQLiteDatabase db, int i, int i1) {
 
+    }
+
+    @Singleton
+    @Provides
+    public SQLiteDatabase getInstance(Context context) {
+        if (examBaseHelper == null) {
+            return new ExamBaseHelper(context).getWritableDatabase();
+        }
+        return examBaseHelper.getWritableDatabase();
     }
 }

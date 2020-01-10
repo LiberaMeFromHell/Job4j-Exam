@@ -13,14 +13,16 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
+import javax.inject.Inject;
+
 import ru.job4j.exam.R;
 import ru.job4j.exam.model.database.ExamBaseHelper;
 import ru.job4j.exam.model.database.ExamDbSchema;
 
 public class ExamAddFragment extends Fragment {
 
-
-    private SQLiteDatabase store;
+    @Inject
+    protected SQLiteDatabase store;
 
     @Nullable
     @Override
@@ -35,8 +37,6 @@ public class ExamAddFragment extends Fragment {
                     value.put(ExamDbSchema.ExamTable.Cols.TITLE, edit.getText().toString());
                     store.insert(ExamDbSchema.ExamTable.NAME, null, value);
                     this.getActivity().onBackPressed();
-                    /*FragmentManager fm = getActivity().getSupportFragmentManager();
-                    fm.popBackStack();*/
                 }
         );
         return view;

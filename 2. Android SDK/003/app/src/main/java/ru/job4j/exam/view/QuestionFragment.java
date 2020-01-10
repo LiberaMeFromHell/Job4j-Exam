@@ -23,16 +23,22 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.DialogFragment;
 import androidx.fragment.app.Fragment;
 
+import javax.inject.Inject;
+
+import ru.job4j.exam.App;
 import ru.job4j.exam.R;
-import ru.job4j.exam.model.MyStore;
 import ru.job4j.exam.model.Store;
 
 public class QuestionFragment extends Fragment implements ConfirmHintDialogFragment.ConfirmHintDialogListener{
+
     private int position = 0;
 
     private Button next;
     private Button previous;
-    private Store store;
+
+    @Inject
+    Store store;
+
     private RadioGroup variants;
     private TextView text;
 
@@ -44,7 +50,9 @@ public class QuestionFragment extends Fragment implements ConfirmHintDialogFragm
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
 
         View view = inflater.inflate(R.layout.question_fragment, container, false);
-        store = MyStore.getInstance();
+
+        App.getStore().inject(this);
+        //store = MemStore.getInstance();
 
         text = view.findViewById(R.id.question);
 
