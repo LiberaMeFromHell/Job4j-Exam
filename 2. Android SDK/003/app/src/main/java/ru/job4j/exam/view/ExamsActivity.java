@@ -15,7 +15,7 @@ import androidx.fragment.app.FragmentManager;
 
 import ru.job4j.exam.R;
 
-public class ExamsActivity extends AppCompatActivity /*implements ConfirmDeletionDialogFragment.ConfirmDeletionDialogListener*/ {
+public class ExamsActivity extends AppCompatActivity {
 
     private FragmentManager fm;
     private Fragment examListFragment;
