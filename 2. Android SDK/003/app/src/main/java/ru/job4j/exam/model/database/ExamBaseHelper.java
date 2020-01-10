@@ -22,8 +22,6 @@ public class ExamBaseHelper extends SQLiteOpenHelper {
     public static final String DB = "exams.db";
     public static final int VERSION = 1;
 
-    private ExamBaseHelper examBaseHelper;
-
     public ExamBaseHelper(Context context) {
         super(context, DB, null, VERSION);
     }
@@ -46,13 +44,6 @@ public class ExamBaseHelper extends SQLiteOpenHelper {
     @Singleton
     @Provides
     public SQLiteDatabase getInstance(Context context) {
-<<<<<<< HEAD
         return new ExamBaseHelper(context).getWritableDatabase();
-=======
-        if (examBaseHelper == null) {
-            return new ExamBaseHelper(context).getWritableDatabase();
-        }
-        return examBaseHelper.getWritableDatabase();
->>>>>>> 6f53879857b0522709c08dbd5443d9c52e6069f1
     }
 }
